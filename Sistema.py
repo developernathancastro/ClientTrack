@@ -5,18 +5,15 @@ from Database import Clientes, session
 janela = tk.Tk()
 janela.title("ClientTrack")
 
-
-def adicionar_cliente():
+def adicionar_clinte():
     nome_cliente = caixa_textonome.get()
     cnpj = caixa_cnpj.get()
     estado = combobox_estado.get()
     telefone = caixa_textotelefone.get()
     email = caixa_textoemail.get()
     tipo_cliente = combobox_tipocliente.get()
-
     clientes = Clientes(nome=nome_cliente, cnpj=cnpj, estado=estado,
                      telefone=telefone, email=email, tipo_de_cliente=tipo_cliente)
-
     session.add(clientes)
     session.commit()
 
@@ -60,7 +57,6 @@ def alterar_dados():
     caixa_textoemail.delete(0, tk.END)
     combobox_tipocliente.delete(0, tk.END)
 
-
 def excluir_cliente():
     nome_cliente = caixa_textonome.get()
     if nome_cliente:
@@ -80,7 +76,6 @@ def consultar_cliente():
     texto = f"ID: {usuario.id}\n Cliente: {usuario.nome}\n CNPJ:{usuario.cnpj}\n Data de Cadastro:{usuario.data_cadastro}\n Estado: {usuario.estado}\n Telefone: {usuario.telefone}\n Email: {usuario.email}\n Tipo de Cliente: {usuario.tipo_de_cliente}"
     caixa_texto.insert("1.0", texto)
     caixa_textonome.delete(0, tk.END)
-
 
 
 botao_adicionarcliente = tk.Button(text="Adicionar", command=adicionar_cliente, relief='flat')
